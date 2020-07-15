@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&display=swap" rel="stylesheet">
+    <title>Profile</title>
 </head>
 <body>
     <header>
-        <h1>Profile</h1>
+        <h1 class="header__headline">Profile</h1>
     </header>
     <main>
-        <section>
-            <img src="/img/user.svg" alt="Profile picture" height="100px">
-            <h2>Vorname Name</h2>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus in excepturi illo architecto <br>
-                quasi maxime perspiciatis dolore enim. Tempore temporibus adipisci ipsum accusamus <br>
-                laborum quae laboriosam. Repudiandae dolor molestiae nemo!
-            </p>
-            <h2>Skills:</h2>
-            <ul>
-                <li>Lorem ipsum</li>
-                <li>Dolor sit</li>
-                <li>Amet consect</li>
-                <li>Adipisicing elit</li>
+        <img class="profile__profile-picture" src="https://source.unsplash.com/500x500/?person" alt="profile picture">
+        <h2 class="profile__headline mb-10">Username</h2>
+        <section class="profile__about-me">
+            <h3 class="profile__about-me--headline">About me:</h3>
+            <p class="profile__about-me--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ut provident officiis laudantium rem, temporibus excepturi quod quibusdam quisquam vitae optio consequatur a perferendis sunt veniam! Minima saepe distinctio temporibus?</p>
+            <h3 class="profile__about-me--headline">My skills:</h3>
+            <ul class="profile__skills"> 
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
             </ul>
-            <button>Logout</button>
+            <button type="submit" class="profile__logout">Logout</button>
         </section>
     </main>
     <footer>
-        <nav>
-            <a href="index.html"><img src="/img/home.svg" height="40px" alt="Home"></a>
-            <a href="bookmarks.html"><img src="/img/bookmark.svg" height="40px" alt="Bookmarks"></a>
-            <a href="create.html"><img src="/img/pen.svg" height="40px" alt="Create"></a>
-            <a href="profile.html"><img src="/img/user.svg" height="40px" alt="Profile"></a>
+        <nav class="nav">
+            <a class="nav__link-1" href="index.html"><img src="/img/icons/q-white.svg" height="40px" alt="Home"></a>
+            <a class="nav__link-2" href="bookmarks.html"><img src="/img/icons/bookmark-white.svg" height="40px" alt="Bookmarks"></a>
+            <a class="nav__link-3" href="create.html"><img src="/img/icons/pen-white.svg" height="40px" alt="Create"></a>
+            <a class="nav__link-4" href="profile.html"><img src="/img/icons/profile-orange.svg" height="40px" alt="Profile"></a>
         </nav>
     </footer>
+    
 </body>
 </html>
