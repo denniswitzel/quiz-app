@@ -16,16 +16,15 @@
 
 .profile__about-me {
     margin: 40px;
-}
 
-.profile__about-me--headline {
-    margin: 0;
-}
+    &--headline {
+        margin: 0;
+    }
 
-.profile__about-me--text {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
-    margin: 5px 0 40px 0;
+    &--text {
+        line-height: 1.5;
+        margin: 5px 0 40px 0;
+    }
 }
 
 .profile__skills {
@@ -33,14 +32,13 @@
     flex-wrap: wrap;
     padding: 0;
     list-style: none;
-}
 
-.profile__skills li {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.8em;
-    background-color: rgba(254, 254, 254, 0.2);
-    margin: 0 10px 20px 0;
-    padding: 10px;
+    & li {
+        font-size: 0.8em;
+        background-color: rgba(254, 254, 254, 0.2);
+        margin: 0 10px 20px 0;
+        padding: 10px;
+    }
 }
 
 .profile__logout {
