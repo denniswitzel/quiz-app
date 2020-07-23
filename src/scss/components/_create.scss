@@ -1,0 +1,23 @@
+.create-box {
+    background: rgb(255,134,90);
+    background: linear-gradient(45deg, rgba(255,134,90,1) 0%, rgba(255,154,114,1) 100%);
+    padding: 30px 40px 30px 40px;
+    margin: 40px 20px 0px 20px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+
+    &__headline {
+        margin: 0;
+    }
+
+    &__textarea {
+        font-family: 'Roboto', sans-serif;
+        color: #022a58;
+        border: none;
+        outline: none;
+        background-color: rgba(254,254,254, .5);
+        padding: 8px;
+        resize: none;
+
+    }
+}
