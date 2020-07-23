@@ -1,54 +1,59 @@
 .question-box {
-    position: relative;
-    background: rgb(255,134,90);
-    background: linear-gradient(45deg, rgba(255,134,90,1) 0%, rgba(255,154,114,1) 100%);
-    padding: 40px;
-    margin: 60px 20px 0px 20px;
-    border-radius: 30px;
-    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
-    scroll-snap-align: center;
+  position: relative;
+  background: rgb(255, 134, 90);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 134, 90, 1) 0%,
+    rgba(255, 154, 114, 1) 100%
+  );
+  padding: 40px;
+  margin: 60px 20px 0px 20px;
+  border-radius: 30px;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  scroll-snap-align: center;
 
-    &__bookmark--marked1, &__bookmark--marked2, &__bookmark--marked3, &__bookmark--marked4, &__bookmark--marked5, &__bookmark--marked6 {
-        fill: rgb(255, 255, 0);
-        height: 60px;
-        position: absolute;
-        right: 25px;
-        top: -14px;
-    }
+  &__text {
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
 
-    &__bookmark--unmarked1, &__bookmark--unmarked2, &__bookmark--unmarked3, &__bookmark--unmarked4, &__bookmark--unmarked5, &__bookmark--unmarked6 {
-        fill: #EDEDED;
-        height: 60px;
-        position: absolute;
-        right: 25px;
-        top: -14px;
-    } 
+  &:last-of-type {
+    margin-bottom: 50px;
+  }
 
-    &__text {
-        margin-top: 5px;
-        margin-bottom: 25px;
-    }
+  &__answer {
+    transition: max-height 0.6s ease-in-out;
+    overflow: hidden;
+    max-height: 150px;
+  } 
 
-    &:last-of-type {
-        margin-bottom: 50px;
-    }
+  &__hidden {
+    max-height: 0;
+  }
 
-    &__answer {
-        display: none;
-    }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+  }
 
-    &__tags {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0;
-        list-style: none;
-    }
+  &__tags li {
+    font-size: 0.8em;
+    background-color: rgba(254, 254, 254, 0.2);
+    margin: 7px 7px;
+    padding: 10px;
+  }
+}
 
-    &__tags li {
-        font-size: 0.8em;
-        background-color: rgba(254, 254, 254, 0.2);
-        margin: 7px 7px;
-        padding: 10px;
-    }
+.question-bookmark {
+  fill: #ededed;
+  height: 60px;
+  position: absolute;
+  right: 25px;
+  top: -14px;
+}
 
+.active {
+  fill: rgb(255, 255, 0);
 }

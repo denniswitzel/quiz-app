@@ -1,40 +1,32 @@
 .mb-10 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .mb-30 {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .mt-10 {
-    margin-top: 10px;
-}
-
-.d-none{
-    display: none;
+  margin-top: 10px;
 }
 
 .ff-roboto {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
-.button-answer, .button-answer1, .button-answer2, .button-answer3, .button-answer4, .button-answer5, .button-answer6 {
-    display: block;
-    font-family: 'Anton', sans-serif;
-    font-size: inherit;
-    text-decoration: none;
-    background-color: #022a58;
-    border: none;
-    color: white;
-    padding: 10px 25px 10px 25px;
-    margin: auto;
-    border-radius: 7px;
+.button-answer, .button-form {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: inherit;
+  text-decoration: none;
+  background-color: #022a58;
+  border: none;
+  color: white;
+  padding: 10px 25px 10px 25px;
+  margin: auto;
+  border-radius: 7px;
 }
 
 .hidden {
-    display: none;
-}
-
-.svg-fill {
-    fill: rgb(255,134,90);
+  display: none;
 }
