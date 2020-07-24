@@ -1,8 +1,7 @@
 import { getAll } from './util'
 
-getAll()
-
 export function initBookmark () {
+   
     const bookmark = getAll('.question-bookmark')
     bookmark.forEach(toggleActive)
 

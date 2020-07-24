@@ -1,5 +1,4 @@
 import { get } from './util'
-get()
 
 export function initDarkmode (){
 const body = get('body')
