@@ -133,7 +133,91 @@ function get(selector) {
 function getAll(selector) {
   return document.querySelectorAll(selector);
 }
-},{}],"src/js/navigation.js":[function(require,module,exports) {
+},{}],"src/js/answer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initAnswer = initAnswer;
+
+var _util = require("./util");
+
+function initAnswer() {
+  // Question Container 
+  var questionBox = (0, _util.getAll)('.question-box');
+  questionBox.forEach(toggleLogic); // Show Answer On Click Event 
+
+  function toggleLogic(answer) {
+    var button = answer.querySelector('.button-answer');
+    var answerText = answer.querySelector('.question-box__answer');
+    button.addEventListener('click', function () {
+      answerText.classList.toggle('question-box__hidden');
+      button.textContent = button.textContent === 'Show answer' ? 'Hide answer' : 'Show answer';
+    });
+  }
+}
+},{"./util":"src/js/util.js"}],"src/js/bookmark.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initBookmark = initBookmark;
+
+var _util = require("./util");
+
+function initBookmark() {
+  var bookmark = (0, _util.getAll)('.question-bookmark');
+  bookmark.forEach(toggleActive);
+
+  function toggleActive(element) {
+    element.addEventListener('click', function () {
+      return element.classList.toggle('active');
+    });
+  }
+}
+},{"./util":"src/js/util.js"}],"src/js/darkmode.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initDarkmode = initDarkmode;
+
+var _util = require("./util");
+
+function initDarkmode() {
+  var body = (0, _util.get)('body');
+  var header = (0, _util.get)('header');
+  var footer = (0, _util.get)('footer');
+  var darkMode = (0, _util.get)('.dark-mode');
+  var profilePage = (0, _util.get)('.profile');
+  darkMode.addEventListener('click', function () {
+    body.classList.toggle('body-light');
+    header.classList.toggle('background-blue');
+    footer.classList.toggle('background-blue');
+    profilePage.classList.toggle('profile-light');
+  });
+}
+},{"./util":"src/js/util.js"}],"src/js/form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initForm = initForm;
+
+var _util = require("./util");
+
+function initForm() {
+  var form = (0, _util.get)('form');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    form.reset();
+  });
+}
+},{"./util":"src/js/util.js"}],"src/js/navigation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -183,109 +267,25 @@ function initNavigation() {
     });
   }
 }
-},{"./util":"src/js/util.js"}],"src/js/answer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initAnswer = initAnswer;
-
-var _util = require("./util");
-
-function initAnswer() {
-  // Question Container 
-  var questionBox = (0, _util.getAll)('.question-box');
-  questionBox.forEach(toggleLogic); // Show Answer On Click Event 
-
-  function toggleLogic(answer) {
-    var button = answer.querySelector('.button-answer');
-    var answerText = answer.querySelector('.question-box__answer');
-    button.addEventListener('click', function () {
-      answerText.classList.toggle('question-box__hidden');
-      button.textContent = button.textContent === 'Show answer' ? 'Hide answer' : 'Show answer';
-    });
-  }
-}
-},{"./util":"src/js/util.js"}],"src/js/bookmark.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initBookmark = initBookmark;
-
-var _util = require("./util");
-
-function initBookmark() {
-  var bookmark = (0, _util.getAll)('.question-bookmark');
-  bookmark.forEach(toggleActive);
-
-  function toggleActive(element) {
-    element.addEventListener('click', function () {
-      return element.classList.toggle('active');
-    });
-  }
-}
-},{"./util":"src/js/util.js"}],"src/js/form.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initForm = initForm;
-
-var _util = require("./util");
-
-function initForm() {
-  var form = (0, _util.get)('form');
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    form.reset();
-  });
-}
-},{"./util":"src/js/util.js"}],"src/js/darkmode.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initDarkmode = initDarkmode;
-
-var _util = require("./util");
-
-function initDarkmode() {
-  var body = (0, _util.get)('body');
-  var header = (0, _util.get)('header');
-  var footer = (0, _util.get)('footer');
-  var darkMode = (0, _util.get)('.dark-mode');
-  var profilePage = (0, _util.get)('.profile');
-  darkMode.addEventListener('click', function () {
-    body.classList.toggle('body-light');
-    header.classList.toggle('background-blue');
-    footer.classList.toggle('background-blue');
-    profilePage.classList.toggle('profile-light');
-  });
-}
 },{"./util":"src/js/util.js"}],"src/js/index.js":[function(require,module,exports) {
 "use strict";
-
-var _navigation = require("./navigation");
 
 var _answer = require("./answer");
 
 var _bookmark = require("./bookmark");
 
+var _darkmode = require("./darkmode");
+
 var _form = require("./form");
 
-var _darkmode = require("./darkmode");
+var _navigation = require("./navigation");
 
 (0, _navigation.initNavigation)();
 (0, _answer.initAnswer)();
 (0, _bookmark.initBookmark)();
 (0, _form.initForm)();
 (0, _darkmode.initDarkmode)();
-},{"./navigation":"src/js/navigation.js","./answer":"src/js/answer.js","./bookmark":"src/js/bookmark.js","./form":"src/js/form.js","./darkmode":"src/js/darkmode.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./answer":"src/js/answer.js","./bookmark":"src/js/bookmark.js","./darkmode":"src/js/darkmode.js","./form":"src/js/form.js","./navigation":"src/js/navigation.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

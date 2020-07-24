@@ -1,8 +1,8 @@
-import { initNavigation } from './navigation'
 import { initAnswer } from './answer'
 import { initBookmark } from './bookmark'
-import { initForm } from './form'
 import { initDarkmode } from './darkmode'
+import { initForm } from './form'
+import { initNavigation } from './navigation'
 
 initNavigation()
 initAnswer()
