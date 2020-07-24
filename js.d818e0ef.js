@@ -143,12 +143,9 @@ exports.initNavigation = initNavigation;
 
 var _util = require("./util");
 
-(0, _util.get)();
-(0, _util.getAll)();
-
 function initNavigation() {
   // Headline
-  var headline = (0, _util.get)('h1'); // Main Content
+  var headline = (0, _util.get)('h1'); // Pages
 
   var questionPage = (0, _util.get)('.question');
   var bookmarkPage = (0, _util.get)('.bookmark');
@@ -161,7 +158,7 @@ function initNavigation() {
   navList[0].addEventListener('click', changePage(questionPage, '<span class="header__headline--gradient">CSS:</span> { Quiz }'));
   navList[1].addEventListener('click', changePage(bookmarkPage, 'Bookmarks'));
   navList[2].addEventListener('click', changePage(createPage, 'Create'));
-  navList[3].addEventListener('click', changePage(profilePage, 'Profile'));
+  navList[3].addEventListener('click', changePage(profilePage, 'Profile')); // Show and Hide Pages  
 
   function changePage(namePage, title) {
     return function () {
@@ -176,11 +173,13 @@ function initNavigation() {
     bookmarkPage.classList.add('hidden');
     createPage.classList.add('hidden');
     profilePage.classList.add('hidden');
-  }
+  } // Navigation Icon Fill Change  
+
 
   function svgFill(element) {
     element.addEventListener('click', function () {
-      return element.classList.toggle('fill-orange');
+      element.classList.remove('fill-orange');
+      element.classList.add('fill-orange');
     });
   }
 }
@@ -195,8 +194,9 @@ exports.initAnswer = initAnswer;
 var _util = require("./util");
 
 function initAnswer() {
+  // Question Container 
   var questionBox = (0, _util.getAll)('.question-box');
-  questionBox.forEach(toggleLogic);
+  questionBox.forEach(toggleLogic); // Show Answer On Click Event 
 
   function toggleLogic(answer) {
     var button = answer.querySelector('.button-answer');
@@ -216,8 +216,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.initBookmark = initBookmark;
 
 var _util = require("./util");
-
-(0, _util.getAll)();
 
 function initBookmark() {
   var bookmark = (0, _util.getAll)('.question-bookmark');
@@ -239,8 +237,6 @@ exports.initForm = initForm;
 
 var _util = require("./util");
 
-(0, _util.get)();
-
 function initForm() {
   var form = (0, _util.get)('form');
   form.addEventListener('submit', function (event) {
@@ -258,8 +254,6 @@ exports.initDarkmode = initDarkmode;
 
 var _util = require("./util");
 
-(0, _util.get)();
-
 function initDarkmode() {
   var body = (0, _util.get)('body');
   var header = (0, _util.get)('header');
@@ -276,8 +270,6 @@ function initDarkmode() {
 },{"./util":"src/js/util.js"}],"src/js/index.js":[function(require,module,exports) {
 "use strict";
 
-var _util = require("./util");
-
 var _navigation = require("./navigation");
 
 var _answer = require("./answer");
@@ -288,13 +280,12 @@ var _form = require("./form");
 
 var _darkmode = require("./darkmode");
 
-(0, _util.get)();
 (0, _navigation.initNavigation)();
 (0, _answer.initAnswer)();
 (0, _bookmark.initBookmark)();
 (0, _form.initForm)();
 (0, _darkmode.initDarkmode)();
-},{"./util":"src/js/util.js","./navigation":"src/js/navigation.js","./answer":"src/js/answer.js","./bookmark":"src/js/bookmark.js","./form":"src/js/form.js","./darkmode":"src/js/darkmode.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./navigation":"src/js/navigation.js","./answer":"src/js/answer.js","./bookmark":"src/js/bookmark.js","./form":"src/js/form.js","./darkmode":"src/js/darkmode.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -322,7 +313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49256" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49854" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -499,4 +490,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/js/index.js"], null)
-//# sourceMappingURL=js.d818e0ef.js.map
+//# sourceMappingURL=/js.d818e0ef.js.map
