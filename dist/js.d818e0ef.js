@@ -144,9 +144,8 @@ exports.initAnswer = initAnswer;
 var _util = require("./util");
 
 function initAnswer() {
-  // Question Container 
   var questionBox = (0, _util.getAll)('.question-box');
-  questionBox.forEach(toggleLogic); // Show Answer On Click Event 
+  questionBox.forEach(toggleLogic);
 
   function toggleLogic(answer) {
     var button = answer.querySelector('.button-answer');
@@ -228,21 +227,18 @@ exports.initNavigation = initNavigation;
 var _util = require("./util");
 
 function initNavigation() {
-  // Headline
-  var headline = (0, _util.get)('h1'); // Pages
-
+  var headline = (0, _util.get)('h1');
   var questionPage = (0, _util.get)('.question');
   var bookmarkPage = (0, _util.get)('.bookmark');
   var createPage = (0, _util.get)('.create');
-  var profilePage = (0, _util.get)('.profile'); // Navigation
-
+  var profilePage = (0, _util.get)('.profile');
   var navList = (0, _util.getAll)('.nav__link');
   var svgList = (0, _util.getAll)('.nav-svg');
   svgList.forEach(svgFill);
   navList[0].addEventListener('click', changePage(questionPage, '<span class="header__headline--gradient">CSS:</span> { Quiz }'));
   navList[1].addEventListener('click', changePage(bookmarkPage, 'Bookmarks'));
   navList[2].addEventListener('click', changePage(createPage, 'Create'));
-  navList[3].addEventListener('click', changePage(profilePage, 'Profile')); // Show and Hide Pages  
+  navList[3].addEventListener('click', changePage(profilePage, 'Profile'));
 
   function changePage(namePage, title) {
     return function () {
@@ -257,8 +253,7 @@ function initNavigation() {
     bookmarkPage.classList.add('hidden');
     createPage.classList.add('hidden');
     profilePage.classList.add('hidden');
-  } // Navigation Icon Fill Change  
-
+  }
 
   function svgFill(element) {
     element.addEventListener('click', function () {
