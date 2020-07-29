@@ -4,7 +4,8 @@
   "description": "A simple app with questions and answers",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html && parcel index.html --public-url '.'"
+    "start": "parcel index.html && parcel index.html --public-url '.'",
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
@@ -16,9 +17,18 @@
     "url": "https://github.com/denniswitzel/quiz-app/issues"
   },
   "homepage": "https://github.com/denniswitzel/quiz-app#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@storybook/preset-scss": "^1.0.2",
+    "css-loader": "^3.6.0",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.5",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/html": "^5.3.19",
+    "@storybook/theming": "^5.3.19",
+    "babel-loader": "^8.1.0",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.10"
   }
