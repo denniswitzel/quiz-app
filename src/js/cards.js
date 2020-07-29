@@ -1,6 +1,6 @@
 import { get, getAll } from './util'
 
-
+//Comment
 
 export const cardList = [{
     question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',

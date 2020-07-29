@@ -1,6 +1,6 @@
 import { get } from './util'
 import { cardList } from './cards'
-
+//Comment
 export function initForm() {
   const form = get('form')
 
