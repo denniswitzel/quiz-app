@@ -1,6 +1,6 @@
 import { get, getAll } from './util'
 import { initCardsQuestion } from './cards'
-//Comment
+
 export function initNavigation() {
   const headline = get('[data-js=headline]')
   const page = getAll('[data-js=page]')
