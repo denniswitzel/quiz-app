@@ -133,48 +133,96 @@ function get(selector) {
 function getAll(selector) {
   return document.querySelectorAll(selector);
 }
-},{}],"src/js/answer.js":[function(require,module,exports) {
+},{}],"src/js/cards.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.initAnswer = initAnswer;
+exports.initCardsQuestion = initCardsQuestion;
+exports.cardList = void 0;
 
 var _util = require("./util");
 
-function initAnswer() {
-  var questionBox = (0, _util.getAll)('.question-box');
-  questionBox.forEach(toggleLogic);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-  function toggleLogic(answer) {
-    var button = answer.querySelector('.button-answer');
-    var answerText = answer.querySelector('.question-box__answer');
-    button.addEventListener('click', function () {
-      answerText.classList.toggle('question-box__hidden');
-      button.textContent = button.textContent === 'Show answer' ? 'Hide answer' : 'Show answer';
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var cardList = [{
+  question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  answer: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  isBookmarked: false,
+  tags: ['HTML', 'CSS']
+}, {
+  question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  answer: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  isBookmarked: false,
+  tags: ['HTML', 'CSS', 'React']
+}, {
+  question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  answer: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  isBookmarked: false,
+  tags: ['HTML', 'CSS', 'javaScript', 'React']
+}, {
+  question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  answer: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  isBookmarked: false,
+  tags: ['HTML', 'CSS', 'javaScript']
+}, {
+  question: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  answer: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
+  isBookmarked: false,
+  tags: ['HTML', 'javaScript', 'React']
+}];
+exports.cardList = cardList;
+
+function initCardsQuestion() {
+  var target = (0, _util.get)('[data-name=question]');
+  target.innerHTML = '';
+  cardList.forEach(buildingCard);
+
+  function buildingCard(card) {
+    var newCard = document.createElement('section');
+    newCard.className = 'question-box';
+    newCard.innerHTML =
+    /*html*/
+    "<svg data-js=\"bookmark\" class=\"question-bookmark\" x=\"0px\" y=\"0px\" width=\"80.8px\" height=\"107.8px\" viewBox=\"0 0 80.8 107.8\" enable-background=\"new 0 0 80.8 107.8\" xml:space=\"preserve\">\n        <polygon points=\"0,26.3 80.8,26.3 80.8,0 14.5,0 \"/>\n        <polygon  points=\"80.8,107.8 47.6,92.2 14.5,107.8 14.5,0 80.8,0 \"/>\n        <polygon points=\"47.7,37.1 53.1,48.2 65.3,49.9 56.5,58.5 58.6,70.6 47.7,64.9 36.8,70.6 38.9,58.5 30.1,49.9 42.2,48.2 \"/></svg>\n        <h2 class=\"question-box__headline mb-10\">Question:</h2>\n        <p class=\"question-box__text ff-roboto\">".concat(card.question, "</p>\n        <button class=\"button-answer\">Show answer</button>\n        <div class=\"question-box__answer question-box__hidden\">\n            <h2 class=\"question-box__headline mb-10\">Answer:</h2>\n            <p class=\"question-box__text ff-roboto\">").concat(card.answer, "</p>\n        </div>");
+    target.appendChild(newCard);
+    var ulList = document.createElement('ul');
+    ulList.classList.add('question-box__tags', 'ff-roboto');
+    card.tags.forEach(function (tag) {
+      var li = document.createElement('li');
+      li.textContent = tag;
+      ulList.appendChild(li);
     });
+    newCard.appendChild(ulList);
+    toggleLogic(newCard);
+    activeBookmark(newCard);
   }
 }
-},{"./util":"src/js/util.js"}],"src/js/bookmark.js":[function(require,module,exports) {
-"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initBookmark = initBookmark;
-
-var _util = require("./util");
-
-function initBookmark() {
-  var bookmark = (0, _util.getAll)('.question-bookmark');
-  bookmark.forEach(toggleActive);
-
-  function toggleActive(element) {
-    element.addEventListener('click', function () {
-      return element.classList.toggle('active');
+function activeBookmark(card) {
+  var bookmarks = card.querySelector('[data-js=bookmark]');
+  bookmarks.addEventListener('click', function () {
+    bookmarks.classList.toggle('active');
+    var isBookmarked = cardList.map(function (obj) {
+      return obj.isBookmarked === false ? _objectSpread(_objectSpread({}, obj), {}, {
+        isBookmarked: true
+      }) : obj;
     });
-  }
+    console.log(isBookmarked);
+  });
+}
+
+function toggleLogic(card) {
+  var button = card.querySelector('.button-answer');
+  var answerText = card.querySelector('.question-box__answer');
+  button === null || button === void 0 ? void 0 : button.addEventListener('click', function () {
+    answerText.classList.toggle('question-box__hidden');
+    button.textContent = button.textContent === 'Show answer' ? 'Hide answer' : 'Show answer';
+  });
 }
 },{"./util":"src/js/util.js"}],"src/js/darkmode.js":[function(require,module,exports) {
 "use strict";
@@ -209,14 +257,28 @@ exports.initForm = initForm;
 
 var _util = require("./util");
 
+var _cards = require("./cards");
+
 function initForm() {
   var form = (0, _util.get)('form');
-  form.addEventListener('submit', function (event) {
+  form === null || form === void 0 ? void 0 : form.addEventListener('submit', function (event) {
     event.preventDefault();
+    var question = form.question,
+        answer = form.answer,
+        tags = form.tags;
+
+    _cards.cardList.push({
+      question: question.value,
+      answer: answer.value,
+      tags: tags.value.split(',').map(function (tag) {
+        return tag.trim();
+      })
+    });
+
     form.reset();
   });
 }
-},{"./util":"src/js/util.js"}],"src/js/navigation.js":[function(require,module,exports) {
+},{"./util":"src/js/util.js","./cards":"src/js/cards.js"}],"src/js/navigation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -226,48 +288,35 @@ exports.initNavigation = initNavigation;
 
 var _util = require("./util");
 
+var _cards = require("./cards");
+
 function initNavigation() {
-  var headline = (0, _util.get)('h1');
-  var questionPage = (0, _util.get)('.question');
-  var bookmarkPage = (0, _util.get)('.bookmark');
-  var createPage = (0, _util.get)('.create');
-  var profilePage = (0, _util.get)('.profile');
-  var navList = (0, _util.getAll)('.nav__link');
-  var svgList = (0, _util.getAll)('.nav-svg');
-  svgList.forEach(svgFill);
-  navList[0].addEventListener('click', changePage(questionPage, '<span class="header__headline--gradient">CSS:</span> { Quiz }'));
-  navList[1].addEventListener('click', changePage(bookmarkPage, 'Bookmarks'));
-  navList[2].addEventListener('click', changePage(createPage, 'Create'));
-  navList[3].addEventListener('click', changePage(profilePage, 'Profile'));
+  var headline = (0, _util.get)('[data-js=headline]');
+  var page = (0, _util.getAll)('[data-js=page]');
+  var navList = (0, _util.getAll)('[data-js=nav-icon]');
+  navList.forEach(function (navIcon) {
+    navIcon.addEventListener('click', function () {
+      var navTarget = navIcon.dataset.name;
+      headline.textContent = navIcon.dataset.headline;
 
-  function changePage(namePage, title) {
-    return function () {
-      hiddenPages();
-      namePage.classList.remove('hidden');
-      headline.innerHTML = title;
-    };
-  }
+      if (navTarget === 'question') {
+        (0, _cards.initCardsQuestion)();
+      }
 
-  function hiddenPages() {
-    questionPage.classList.add('hidden');
-    bookmarkPage.classList.add('hidden');
-    createPage.classList.add('hidden');
-    profilePage.classList.add('hidden');
-  }
-
-  function svgFill(element) {
-    element.addEventListener('click', function () {
-      element.classList.remove('fill-orange');
-      element.classList.add('fill-orange');
+      page.forEach(function (page) {
+        var pageName = page.dataset.name;
+        page.classList.toggle('hidden', pageName !== navTarget);
+      });
+      navList.forEach(function (oneOfAllIcons) {
+        oneOfAllIcons.classList.toggle('fill-orange', oneOfAllIcons === navIcon);
+      });
     });
-  }
+  });
 }
-},{"./util":"src/js/util.js"}],"src/js/index.js":[function(require,module,exports) {
+},{"./util":"src/js/util.js","./cards":"src/js/cards.js"}],"src/js/index.js":[function(require,module,exports) {
 "use strict";
 
-var _answer = require("./answer");
-
-var _bookmark = require("./bookmark");
+var _cards = require("./cards");
 
 var _darkmode = require("./darkmode");
 
@@ -276,11 +325,10 @@ var _form = require("./form");
 var _navigation = require("./navigation");
 
 (0, _navigation.initNavigation)();
-(0, _answer.initAnswer)();
-(0, _bookmark.initBookmark)();
 (0, _form.initForm)();
 (0, _darkmode.initDarkmode)();
-},{"./answer":"src/js/answer.js","./bookmark":"src/js/bookmark.js","./darkmode":"src/js/darkmode.js","./form":"src/js/form.js","./navigation":"src/js/navigation.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _cards.initCardsQuestion)();
+},{"./cards":"src/js/cards.js","./darkmode":"src/js/darkmode.js","./form":"src/js/form.js","./navigation":"src/js/navigation.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -308,7 +356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54672" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65232" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
